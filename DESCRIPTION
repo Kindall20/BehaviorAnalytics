@@ -1,0 +1,10 @@
+Package: BehaviorAnalytics
+Title: A Comprehensive Toolkit for Analyzing Behavior Data
+Version: 0.0.0.9000
+Authors@R: "Kindall Leslie <kindall.leslie@example.com> [aut, cre]"
+Description: This package offers tools to help professionals in Applied Behavior Analysis (ABA) analyze behavior data. 
+It includes functions for tracking progress, measuring treatment effectiveness, and creating visualizations for ABA studies.
+Depends: R version 4.0.0 or later 
+Imports: ggplot2, dplyr, tidyr, lubridate
+License: GNU
+LazyData: true
