@@ -9,7 +9,8 @@ output: github_document
 
 # Package Overview: BehaviorAnalytics
   
-  **BehaviorAnalytics** is an R package designed to support professionals in Applied Behavior Analysis (ABA) by providing intuitive tools for behavior data analysis. It enables the tracking of behavioral progress, evaluation of treatment effectiveness, and creation of clear visualizations.
+  **BehaviorAnalytics** is an R package designed to support professionals in Applied Behavior Analysis (ABA) by providing intuitive tools for behavior data analysis. 
+It enables the tracking of behavioral progress, evaluation of treatment effectiveness, and creation of clear visualizations.
 
 This package focuses on the core dimensions of ABA, such as:
   - **Frequency** (how often a behavior occurs)
