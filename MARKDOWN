@@ -1,0 +1,69 @@
+---
+  title: "BehaviorAnalytics R Package"
+author: "Kindall Leslie"
+date: "April 13, 2025"
+output: github_document
+---
+  
+---
+
+# Package Overview: BehaviorAnalytics
+  
+  **BehaviorAnalytics** is an R package designed to support professionals in Applied Behavior Analysis (ABA) by providing intuitive tools for behavior data analysis. It enables the tracking of behavioral progress, evaluation of treatment effectiveness, and creation of clear visualizations.
+
+This package focuses on the core dimensions of ABA, such as:
+  - **Frequency** (how often a behavior occurs)
+- **Duration** (how long a behavior lasts)
+- **Intensity** (rated level or severity of a behavior)
+
+It is specifically designed for practitioners working with individuals diagnosed with autism spectrum disorder (ASD) and related developmental disorders.
+
+---
+  
+# Function 1: `track_frequency()`
+  
+# Purpose:
+  Calculates the number of times a behavior occurs across given sessions or dates.
+
+#Inputs:
+- `data`: A data frame containing a `date` column and `behavior` column.
+- `target_behavior`: The specific behavior to track.
+- `by`: Optional grouping variable (e.g., by client or session).
+
+#Output:
+A summarized data frame showing the frequency of the target behavior over time or by group.
+
+# Example:
+```r
+track_frequency(data = behavior_data, target_behavior = "tantrum")
+
+# Function 2: `calculate_duration_summary()`
+
+# Purpose:
+Summarizes the average, max, and min duration of a target behavior over a selected timeframe.
+
+#Inputs:
+- `data`: Data frame with duration, date, and behavior columns.
+- `behavior_name`: The behavior to summarize.
+- `start_date, end_date`:  Optional date range for filtering.
+
+#Output:
+A summary table with statistics on behavior duration.
+# Example:
+```r
+calculate_duration_summary(data = session_data, behavior_name = "task avoidance")
+
+# Function 3: `plot_behavior_trend()`
+
+# Purpose:
+Creates a time series plot to visualize the trend of a behavior (frequency or duration) over time.
+#Inputs:
+- `data`: A data frame with date, behavior, and metric columns.
+- `metric`: Either "frequency" or "duration".
+- `behavior_name`: The behavior to plot.
+
+#Output:
+A ggplot2 line chart.
+# Example:
+```r
+plot_behavior_trend(data = tracking_data, metric = "frequency", behavior_name = "elopement")
