@@ -1,1 +1,32 @@
+#' Track Behavior Frequency
+
+#' Calculates the frequency of a specific behavior over time or grouped by a variable.
+
+#' @param data A data frame with at least 'date' and 'behavior' columns.
+#' @param target_behavior A string, the behavior to track.
+#' @param by An optional grouping variable (e.g., client or session).
+
+#' @return A data frame summarizing behavior frequency.
+#' @export
+#' @examples
+
+track_frequency(data = behavior_data, target_behavior = "tantrum")
+track_frequency <- function(data, target_behavior, by = NULL) {
+  library(dplyr)
+  
+  data_filtered <- data %>%
+    filter(behavior == target_behavior)
+  
+  if (!is.null(by)) {
+    summary <- data_filtered %>%
+      group_by(.data[[by]]) %>%
+      summarize(frequency = n(), .groups = "drop")
+  } else {
+    summary <- data_filtered %>%
+      group_by(date) %>%
+      summarize(frequency = n(), .groups = "drop")
+  }
+  
+  return(summary)
+}
 
