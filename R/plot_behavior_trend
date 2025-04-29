@@ -1,1 +1,31 @@
+#' Plot Behavior Trend Over Time
+
+#' Creates a line plot of behavior trends by frequency or duration.
+
+#' @param data A data frame with 'date', 'behavior', and metric column (either 'frequency' or 'duration').
+#' @param metric The metric to plot ("frequency" or "duration").
+#' @param behavior_name The behavior to plot.
+
+#' @return A ggplot2 line plot.
+#' @export
+#' @examples
+
+plot_behavior_trend(data = tracking_data, metric = "frequency", behavior_name = "elopement")
+plot_behavior_trend <- function(data, metric, behavior_name) {
+  library(ggplot2)
+  library(dplyr)
+  
+  data_filtered <- data %>%
+    filter(behavior == behavior_name)
+  
+  ggplot(data_filtered, aes(x = date, y = .data[[metric]])) +
+    geom_line(color = "blue", size = 1.2) +
+    geom_point(color = "darkblue") +
+    labs(
+      title = paste("Trend of", behavior_name),
+      x = "Date",
+      y = metric
+    ) +
+    theme_minimal()
+}
 
