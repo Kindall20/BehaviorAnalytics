@@ -1,1 +1,41 @@
+#' Summarize Behavior Duration
+
+#' Calculates average, minimum, and maximum duration for a behavior.
+
+#' @param data A data frame with 'duration', 'date', and 'behavior' columns.
+#' @param behavior_name The behavior to summarize.
+#' @param start_date Optional start date for filtering.
+#' @param end_date Optional end date for filtering.
+
+#' @return A data frame with duration statistics.
+#' @export
+#' @examples
+
+calculate_duration_summary(data = session_data, behavior_name = "task avoidance")
+calculate_duration_summary <- function(data, behavior_name, start_date = NULL, end_date = NULL) {
+  library(dplyr)
+  library(lubridate)
+  
+  data_filtered <- data %>%
+    filter(behavior == behavior_name)
+  
+  if (!is.null(start_date)) {
+    data_filtered <- data_filtered %>%
+      filter(date >= ymd(start_date))
+  }
+  
+  if (!is.null(end_date)) {
+    data_filtered <- data_filtered %>%
+      filter(date <= ymd(end_date))
+  }
+  
+  summary <- data_filtered %>%
+    summarize(
+      avg_duration = mean(duration, na.rm = TRUE),
+      max_duration = max(duration, na.rm = TRUE),
+      min_duration = min(duration, na.rm = TRUE)
+    )
+  
+  return(summary)
+}
 
